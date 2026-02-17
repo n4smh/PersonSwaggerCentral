@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: PersonSwaggerCentral
+  security:
+    user:
+      name: user_person_swagger
+      password: asdf1234
+
+server:
+  port: 8090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - info
+        - health
+
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    path: '/swagger-ui.html'
+    urls:
+    - name: cud
+      url: http://localhost:8091/v3/api-docs/cud
+    - name: query
+      url: http://localhost:8092/v3/api-docs/query
+    - name: gw
+      url: http://localhost:8080/v3/api-docs/gw
+
+logging:
+  level:
+    root: info
