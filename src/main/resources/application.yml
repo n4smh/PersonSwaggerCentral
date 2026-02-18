@@ -1,15 +1,32 @@
 spring:
   application:
-    name: PersonSwaggerCentral
+    name: ${person.swagger-central.name}
+
   security:
     user:
-      name: user_person_swagger
-      password: asdf1234
+      name: ${person.swagger-central.security-user-name}
+      password: ${person.swagger-central.security-user-password}
 
 server:
-  port: 8090
+  port: ${person.swagger-central.port}
 
 management:
+  tracing:
+    sampling:
+      probability: ${person.otlp-tracing-sampling-probability}
+  otlp:
+    metrics:
+      export:
+        url: ${person.otlp-metrics-uri}
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: ${person.otlp-tracing-uri}
+    logging:
+      export:
+        otlp:
+          endpoint: ${person.otlp-logging-uri}
   endpoints:
     web:
       exposure:
@@ -17,18 +34,23 @@ management:
         - info
         - health
 
+logging:
+  pattern:
+    correlation: ${person.logging-pattern-correlation}
+
 springdoc:
   show-actuator: true
   swagger-ui:
-    path: '/swagger-ui.html'
+    enabled: ${person.swagger-enabled}
     urls:
-    - name: cud
-      url: http://localhost:8091/v3/api-docs/cud
-    - name: query
-      url: http://localhost:8092/v3/api-docs/query
-    - name: gw
-      url: http://localhost:8080/v3/api-docs/gw
+    - name: ${person.gw.context}
+      url: ${person.gw.uri}/v3/api-docs/${person.gw.context}
 
-logging:
-  level:
-    root: info
+    - name: ${person.cud.context}
+      url: ${person.cud.uri}/v3/api-docs/${person.cud.context}
+
+    - name: ${person.query.context}
+      url: ${person.query.uri}/v3/api-docs/${person.query.context}
+
+  api-docs:
+    enabled: ${person.swagger-enabled}

@@ -3,7 +3,7 @@ package in.n4smh.microservices.person.swagger_central;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = " in.n4smh.microservices")
+@SpringBootApplication(scanBasePackages = "in.n4smh.microservices.person")
 public class PersonSwaggerCentralApplication {
 
 	public static void main(String[] args) {

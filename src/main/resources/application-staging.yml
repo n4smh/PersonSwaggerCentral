@@ -1,0 +1,30 @@
+person:
+  swagger-enabled: true
+  logging-pattern-correlation: "[ %X{traceId:-} %X{spanId:-} ] "
+
+  otlp-metrics-uri: http://localhost:4318/v1/metrics
+  otlp-logging-uri: http://localhost:4318/v1/logs
+  otlp-tracing-uri: http://localhost:4318/v1/traces
+  otlp-tracing-sampling-probability: 1.0
+
+  swagger-central:
+    name: PersonSwaggerCentral
+    port: 8090
+    uri: http://localhost:8090
+    security-user-name: user_person_staging
+    security-user-password: staging1234
+
+  gw:
+    name: PersonGW
+    context: gw
+    uri: http://localhost:8080
+
+  cud:
+    name: PersonCUDAPIs
+    context: cud
+    uri: http://localhost:8091
+
+  query:
+    name: PersonQueryAPIs
+    context: query
+    uri: http://localhost:8092
