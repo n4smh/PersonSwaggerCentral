@@ -5,43 +5,33 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>in.n4smh.microservices</groupId>
+		<groupId>in.n4smh.microservices.person</groupId>
 		<artifactId>parent-pom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>in.n4smh.microservices.person</groupId>
 	<artifactId>swagger-central</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PersonSwaggerCentral</name>
 	<description>Swagger server for Person APIs</description>
 
-	<properties/>
-	
+	<properties>
+		<person-parent-webflux.version>0.0.1-SNAPSHOT</person-parent-webflux.version>
+		<person-shared.version>0.0.1-SNAPSHOT</person-shared.version>
+	</properties>
+
 	<dependencies>
+		<!-- Start: Shared dependencies-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
+			<groupId>in.n4smh.microservices.person</groupId>
+			<artifactId>parent-webflux</artifactId>
+			<version>${person-parent-webflux.version}</version>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux-test</artifactId>
-		</dependency>
-
-		<!-- Start: Spring Security -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<!-- End -->
-
-		<!--Start: Swagger -->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-			<version>${springdoc-openapi.version}</version>
+			<groupId>in.n4smh.microservices.person</groupId>
+			<artifactId>shared</artifactId>
+			<version>${person-shared.version}</version>
 		</dependency>
 		<!-- End -->
 	</dependencies>
