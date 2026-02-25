@@ -8,7 +8,7 @@ person:
   otlp-tracing-sampling-probability: 1.0
 
   swagger-central:
-    name: PersonSwaggerCentral
+    name: person-swagger-central
     port: 8090
     uri: http://localhost:8090
     security-user-name: user_person_prod
